@@ -6,11 +6,13 @@ using UnityEngine;
 public class Particle : MonoBehaviour
 {
     public Transform gravityTarget;
-    public float gravity;
-    public float velocity;
     Rigidbody rb;
 
     private GameManager gm;
+
+    private float init_velocity =  2f;
+    private float saturn_mass = 5.683f * (float)Math.Pow(10, 8);
+    private float grav_const = 6.67f * (float) Math.Pow(10, -8);
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class Particle : MonoBehaviour
         Vector3 diff = transform.position - gravityTarget.position;
         rb = GetComponent<Rigidbody>();
         Vector3 tangent = Vector3.Cross(diff, new Vector3(0, -1, 0));
-        rb.velocity = tangent.normalized * velocity;
+        rb.velocity = tangent.normalized * init_velocity;
     }
 
     // Update is called once per frame
@@ -30,8 +32,9 @@ public class Particle : MonoBehaviour
 
     void ProcessGravity()
     {
+        // Calculate Saturn Force
         Vector3 diff = transform.position - gravityTarget.position;
-        rb.AddForce(-diff.normalized * gravity * (rb.mass));
+        rb.AddForce(-diff.normalized * saturn_mass * grav_const / (float) Math.Pow(diff.magnitude, 2));
 
         List<GameObject> pArray = gm.particleArray;
 
@@ -41,8 +44,7 @@ public class Particle : MonoBehaviour
             float dist = (float) Math.Pow(particle_diff.magnitude, 2);
             if (dist > 0)
             {
-                rb.AddForce(-particle_diff.normalized * 0.001f / dist);
-
+                rb.AddForce(-particle_diff.normalized * grav_const / dist);
             }
         }
     }
