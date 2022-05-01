@@ -36,16 +36,36 @@ public class Particle : MonoBehaviour
         Vector3 diff = transform.position - gravityTarget.position;
         rb.AddForce(-diff.normalized * saturn_mass * grav_const / (float) Math.Pow(diff.magnitude, 2));
 
+       
+        // constant oct block implementation
         List<GameObject> pArray = gm.particleArray;
+        LinkedList<int> block = gm.octantMap[gm.calcOctant(this.transform)];
+        LinkedList<int>.Enumerator em = block.GetEnumerator();
 
-        for (int i = 0; i < pArray.Count; i++)
+        while (em.MoveNext())
         {
-            Vector3 particle_diff = transform.position - pArray[i].transform.position;
-            float dist = (float) Math.Pow(particle_diff.magnitude, 2);
+            int pIndex = em.Current;
+            Vector3 particle_diff = transform.position - pArray[pIndex].transform.position;
+            float dist = (float)Math.Pow(particle_diff.magnitude, 2);
             if (dist > 0)
             {
                 rb.AddForce(-particle_diff.normalized * grav_const / dist);
             }
         }
+
+
+        // naive for loop implementation
+        /*
+        List<GameObject> pArray = gm.particleArray;
+        for (int i = 0; i < pArray.Count; i++)
+        {
+            Vector3 particle_diff = transform.position - pArray[i].transform.position;
+            float dist = (float)Math.Pow(particle_diff.magnitude, 2);
+            if (dist > 0)
+            {
+                rb.AddForce(-particle_diff.normalized * grav_const / dist);
+            }
+        }
+        */
     }
 }
