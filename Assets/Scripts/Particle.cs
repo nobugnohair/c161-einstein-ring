@@ -53,6 +53,42 @@ public class Particle : MonoBehaviour
             }
         }
 
+        rb.AddForce(gm.forceMap[gm.calcOctant(this.transform)]);
+
+
+        // caculate force from nearby blocks
+        /*
+        int x = gm.calcDigit(this.transform.position.x);
+        int y = gm.calcDigit(this.transform.position.y);
+        int z = gm.calcDigit(this.transform.position.z);
+
+        for (int i=-1; i<=1; i++)
+        {
+            for (int j=-1; j<=1; j++)
+            {
+                for (int k=-1; k<=1; k++)
+                {
+                    int dim = gm.getDim();
+
+                    if (x+i >= 0 && x+i < dim && y+j >= 0 && y+j < dim && z+k >=0 && z+k < dim)
+                    {
+                        int oct = (x + i) * dim * dim + (y + j) * dim + z + k;
+                        if (gm.massMap.ContainsKey(oct))
+                        {
+                            Vector3 particl_block_diff = transform.position - gm.blockPosition(x + i, y + j, z + k);
+                            float dist = (float)Math.Pow(particl_block_diff.magnitude, 2);
+                            if (dist > 0)
+                            {
+                                rb.AddForce(-particl_block_diff.normalized * grav_const * gm.massMap[oct] / dist);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        */
+        
+
 
         // naive for loop implementation
         /*
