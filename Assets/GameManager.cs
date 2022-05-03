@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     void CreateParticle()
     {
         GameObject cur;
-        if (count <= 1799)
+        if (count <= 1499)
         {
             if (UnityEngine.Random.Range(0f, 1f) < 0.75)
             {
