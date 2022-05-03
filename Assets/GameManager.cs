@@ -28,6 +28,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public GameObject particles;
+    public GameObject particle2;
 
     [HideInInspector]
     public List<GameObject> particleArray;
@@ -57,9 +58,16 @@ public class GameManager : MonoBehaviour
 
     void CreateParticle()
     {
-        if (count <= 2499)
+        GameObject cur;
+        if (count <= 1799)
         {
-            GameObject cur = Instantiate(particles);
+            if (UnityEngine.Random.Range(0f, 1f) < 0.75)
+            {
+                cur = Instantiate(particles);
+            } else
+            {
+                cur = Instantiate(particle2);
+            }
             count += 1;
             particleArray.Add(cur);
         }

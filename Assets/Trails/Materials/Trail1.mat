@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Trail01_Blue
+  m_Name: Trail1
   m_Shader: {fileID: -6465566751694194690, guid: c0783db0435636e40a048ad66b7095d1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -37,35 +37,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dissolve: 1.85
-    - _DissolvePower: 0
-    - _DissolveScale: 25
-    - _Distortion: 0.074
+    - _Dissolve: 1
+    - _DissolveScale: 35
+    - _Distortion: 0.06
     - _DistortionDissolve: 2
-    - _DistortionScale: 15
-    - _Edge: 1.79
-    - _QueueControl: 0
-    - _QueueOffset: 0
+    - _DistortionScale: 10
+    - _Edge: 0
     - _Rotation: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color01: {r: 17.180496, g: 3.8015647, b: 2.5122423, a: 0.5686275}
-    - _Color02: {r: 0.35421854, g: 0.36185107, b: 0.37735844, a: 1}
-    - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
-    - _DistoritonSpeed: {r: -1, g: 0, b: 0, a: 0}
+    - _Color01: {r: 5.612487, g: 1.0870034, b: 1.0870034, a: 0.6156863}
+    - _Color02: {r: 0.6698113, g: 0.2070355, b: 0.1927287, a: 1}
+    - _DissolveSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _DistoritonSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _MainTexSpeed: {r: -1, g: 0, b: 0, a: 0}
     - _MainTexTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2236693629164543205
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5

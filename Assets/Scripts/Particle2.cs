@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Particle : MonoBehaviour
+public class Particle2 : MonoBehaviour
 {
     public Transform gravityTarget;
     Rigidbody rb;
 
     private GameManager gm;
 
-    private float init_velocity =  2f;
-    private float rand_velocity = 0.2f;
+    private float init_velocity = 2f;
     private float saturn_mass = 5.683f * (float)Math.Pow(10, 8);
-    private float grav_const = 6.67f * (float) Math.Pow(10, -8);
-    
+    private float grav_const = 6.67f * (float)Math.Pow(10, -8);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +22,6 @@ public class Particle : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Vector3 tangent = Vector3.Cross(diff, new Vector3(0, -1, 0));
         rb.velocity = tangent.normalized * init_velocity;
-
-        Vector3 random_dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
-        rb.velocity += random_dir.normalized * rand_velocity;
-        
     }
 
     // Update is called once per frame
@@ -39,9 +34,9 @@ public class Particle : MonoBehaviour
     {
         // Calculate Saturn Force
         Vector3 diff = transform.position - gravityTarget.position;
-        rb.AddForce(-diff.normalized * saturn_mass * grav_const / (float) Math.Pow(diff.magnitude, 2));
+        rb.AddForce(-diff.normalized * saturn_mass * grav_const / (float)Math.Pow(diff.magnitude, 2));
 
-       
+
         // constant oct block implementation
         List<GameObject> pArray = gm.particleArray;
         LinkedList<int> block = gm.octantMap[gm.calcOctant(this.transform)];
@@ -92,7 +87,7 @@ public class Particle : MonoBehaviour
             }
         }
         */
-        
+
 
 
         // naive for loop implementation
