@@ -1,2 +1,2 @@
-# 184final-planetary-ring-formation
+# Einstein Ring Simulation
  
